@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="static/css/bootstrap-3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/bootstrap-3.1.1/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="static/css/style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <title>Contacts</title>
+</head>
+          <body ng-app="App" ng-controller="contactController">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                      <p class="alert alert-danger" style="margin-top:50px">Dashboard Contacts</p>
+                      
+                        <input type="button" value="Ajouter un contact" class="btn btn-primary" ng-click="voirAjout()" style="float:right; margin-bottom:10px;width:150px"/>
+                </div>
+                <div class="col">
+                        <input type="button" value="Voir les contacts" class="btn btn-primary" ng-click="" style="margin-bottom:10px"/>
+                </div>
+              </div>
+              <div class="row">
+                
+                <div class="col-md-4">
+                  
+                  <div id="ajoutContact" ng-show="vu">
+                    <div class="form-group">  
+                        <label>Nom : </label>
+                        <input name="nom" type="text" class="form-control" required ng-minlength="2" ng-maxlength="20" ng-model="contact.nom" />
+    
+                        <label>Prénom : </label>
+                        <input name="prenom" type="text" class="form-control" ng-maxlength="30" ng-model="contact.prenom"/>
+
+                        <label>Poste occupé dans la société : </label>
+                        <input name="poste" type="text" class="form-control" ng-maxlength="30" ng-model="contact.poste"/>
+
+                        <label>Téléphone du contact : </label>
+                        <input name="tel" type="tel" class="form-control" ng-model="contact.tel"/>
+
+                        <label>Téléphone mobile : </label>
+                        <input name="telmob" type="tel" class="form-control" ng-model="contact.telmob"/>
+
+                        <label>Adresse : </label>
+                        <input name="adresse" type="text" class="form-control" ng-model="contact.adresse"/>
+
+                        <label>Site web : </label>
+                        <input name="site" type="text" class="form-control" ng-model="contact.site"/>
+
+                        <label>E-mail : </label>
+                        <input name="mail" type="url" class="form-control" ng-model="contact.mail" required />
+
+                        <label>Notes au sujet de ce contact : </label>
+                        <textarea name="notes" type="text" class="form-control" ng-model="contact.note"></textarea>
+
+                        <hr>
+                        <label>Société : </label>
+                        <select name="societe" id="societe" ng-model="contact.societe">
+                          <option value="" selected></option>
+                          <option value="Google">Google</option>
+                          <option value="Microsoft">Microsoft</option>
+                          <option value="Amazon">Amazon</option>
+                          <option value="Apple">Apple</option>
+                        </select>
+                     Si le nom n'est pas présent dans la liste laissez le champs vide et saisissez-le:
+                        <input name="societe" type="text" class="form-control" ng-maxlength="30" ng-model="contact.societe"/>
+                        <hr>
+    
+                        <input type="submit" class="btn btn-success" value="Envoyer" ng-click="ajout(contact)" style="margin-top:20px"/>
+                    </div>
+  	                  
+                  </div>
+                      <div>
+                        <table class="table is-striped" ng-show="visible">
+                            <h1 class="title" ng-show="visible">Détail du contact</h1>
+                            <tr ng-repeat='(key,contact) in infosContact'>
+                                <td>{{key}}: {{contact}}</td>
+                            </tr>
+                        </table>
+                      </div>
+
+                </div>
+                <div class="col-md-4">
+
+                  <table class="table table-striped table-hover">
+                              <thead><p class="alert alert-danger">Liste</p></thead>
+                              <tbody>
+                                <tr ng-repeat="contact in maliste" class="clickable" ng-click='detailsContact(contact)'>
+                                  <td>{{contact.nom | uppercase}}</td>
+                                  <td>{{contact.prenom}}</td>
+                                  <td><i ng-click="update(contact)" class="far fa-edit"></i>      <i ng-click="delete(contact)" class="fas fa-trash"></i></td>
+                                </tr>
+                              </tbody>
+                  </table>
+                  
+                </div>
+                <div class="col-md-4" ng-show="contactDetails2">
+                  <div class="form-group">
+                  <div ng-repeat='(key,data) in contactDetails2'>
+                    <p>
+                              <label>{{key}} : </label><br>
+                              <input ng-model="data2[key]" value="{{data}}" type="text" class="form-control" ng-maxlength="30">
+
+                    </p>
+                   
+                   
+                  </div>
+                        <input type="submit" class="btn btn-success" value="Envoyer" ng-click="modifier(data2)" style="margin-top:20px"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script src="static/js/angular.min.js"></script>
+            <script src="static/app/app.js"></script>
+            <script src="static/app/controlleurs/contactController.js"></script>
+</body>
+</html>

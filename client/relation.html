@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="lib/bootstrap-3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="lib/bootstrap-3.1.1/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="style.css"/>
+  <title>Relations</title>
+</head>
+          <body ng-app="appPost" ng-controller="relationController" class="container">
+              <table class="table table-striped table-hover">
+                  <thead>
+                    <p class="alert alert-danger" style="margin-top:50px">Dashboard Relations</p>
+                    <tr>
+                      <th><input type="button" value="Ajout" class="btn btn-primary" ng-click="" style="float:right; margin-bottom:10px"/></th>
+                      <th><input type="button" value="Voir les relations" class="btn btn-primary" ng-click="" style="margin-bottom:10px"/></th>
+                    </tr>
+                    
+                    
+                  </thead>
+                  <tbody>
+                    <tr>
+                      
+                    </tr>
+                  </tbody>
+              </table>
+            <div id="ajoutRelation" ng-show="isVisible">
+              <form name="myFormRelation" class="form-group" novalidate>  
+                <label>Nom du contact : </label>
+                <input name="nomContact" type="text" class="form-control" required ng-minlength="2" ng-maxlength="20" ng-model="contact.nom" />
+    
+                <label>Nom de la société : </label>
+                <input name="nomSociete" type="text" class="form-control" ng-maxlength="30" ng-model="societe.nom"/>
+
+                <label>Date : </label>
+                <input name="date" type="date" class="form-control" ng-maxlength="30" ng-model="relation.date"/>
+
+                <label>Sujet : </label>
+                <input name="sujet" type="text" class="form-control" ng-maxlength="30" ng-model="relation.sujet"/>
+
+                <label>Lieu : </label>
+                <input name="lieu" type="text" class="form-control" ng-model="relation.lieu"/>
+
+                <label>Rappel : </label>
+                <input type="radio" name="rappel" value="oui" id="rappelOui" /> <label for="rappelOui">Oui</label>
+                <input type="radio" name="rappel" value="non" id="rappelNon" /> <label for="rappelNon">Non</label><br />
+
+                
+                <label>Notes au sujet de cette relation : </label>
+                <textarea name="notesRelation" type="text" class="form-control" ng-model="relation.note"></textarea>
+
+    
+                <input type="submit" class="btn btn-success"value="Envoyer" ng-click="ajoutContact()" style="margin-top:20px"/>
+              </form>
+  	          
+            </div>
+          
+  <script type="text/javascript" src="lib/tinymce/tinymce.min.js"></script>
+  <!-- <script type="text/javascript" src="lib/angular.min.js"></script> -->
+  <script type="text/javascript" src="lib/angular-1.2.29/angular.js"></script>
+  <script type="text/javascript" src="lib/angular-1.2.29/angular-sanitize.min.js"></script>
+  <script type="text/javascript" src="lib/angular-1.2.29/i18n/angular-locale_fr-fr.js"></script>
+  <script type="text/javascript" src="lib/ui-tinymce.js"></script>
+  <!-- <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="controlers.js"></script> -->
+</body>
+</html>
